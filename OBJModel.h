@@ -32,7 +32,7 @@ public:
                     iss >> x >> y >> z;
                     points.push_back(glm::vec3(x, y, z));
                 }
-                if (prefix == "f") {
+                else if (prefix == "f") {
                     for (int i=0; i<128; i++) {
                         if (iss >> a) {
                             indexes.push_back(intExtractor(a) - 1);
@@ -105,6 +105,18 @@ public:
 
     const std::vector<glm::vec3>& getPoints() const {
         return points;
+    }
+
+    const glm::vec3& getPoint(int index) const {
+        return points[index];
+    }
+
+    void setPoints(const std::vector<glm::vec3>& newPoints) {
+            points = newPoints;
+    }
+
+    void setPoint(int index, glm::vec3 value){
+        points[index]=value;
     }
 
     const std::vector<unsigned int>& getIndexes() const {
